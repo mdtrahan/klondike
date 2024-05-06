@@ -200,24 +200,6 @@ function CGame(oData){
  
     };
 
-// added double-click functionality -MDT
-	
-this.doubleClickMoveToAce = function(oCard){
-    if(oCard.getRank() === _aCurRank[oCard.getSuit()]){ // Check if the card is the next one needed in the ace pile
-        this._snapOnSuit([oCard]); // Move the card to the ace pile
-        _aCurRank[oCard.getSuit()]++; // Increment the rank for that suit
-    }
-};
-
-/////////////////////////////////////////
-	    // Set up double-click event listeners for each card
-    for(var i = 0; i < _aCard.length; i++){
-        _aCard[i].addEventListener("dblclick", (function(card){
-            return function(){
-                _oParent.doubleClickMoveToAce(card);
-            };
-        })(_aCard[i]), false);
-    }
     this.updateScore = function(iPoint){
         _iScore+=iPoint;
         if(_iScore<0){
